@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kontroler przerwań</title>
+</head>
+<body>
+<center>
+	
+	<h1>Kontroler przerwań</h1>
+	<font size="4">
+		W niektórych systemach jest tak dużo obsługiwanych urządzeń, że procesorowi brakuje wyprowadzeń linii przerwań. W takim wypadku stosuje się specjalne urządzenie - kontroler <br />przerwań (np. APIC, Intel 8259 itp.), który pośredniczy pomiędzy procesorem a wieloma urządzeniami żądającymi przerwania. Kontroler przerwań ma kilka linii wejściowych,<br /> podłączonych do wyjść przerwań poszczególnych urządzeń, i jedną wyjściową, za pośrednictwem której przekazuje sygnał przerwania do procesora. Najprostsza sprzętowa <br />realizacja takiego kontrolera to zwykła bramka OR, która wystawia sygnał przerwania do procesora w momencie, kiedy dowolne urządzenie wystawiło taki sygnał. Rzeczywisty<br /> kontroler przerwań ma możliwość maskowania wybranych urządzeń (pochodzących od nich przerwań), nadawania priorytetów poszczególnym urządzeniom, itd. Kontroler przerwań<br /> posiada odpowiedni sterownik - procedurę obsługi przerwania (ang. interrupt handler). W procedurze tej z reguły odczytywany jest rejestr kontrolny kontrolera przerwań i to pozwala<br /> na stwierdzane, które urządzenie wystawiło przerwanie. Na podstawie tego sterownik kontrolera przerwań uruchamia podprogram obsługujący urządzenie (ang. device handler),<br /> które wystawiło to żądanie przerwania. Kontroler przerwań zyskał tak dużą popularność, że większość procesorów posiada już tylko jedną linię przerwania - czyli może obsługiwać <br />tylko jedno urządzenie zewnętrzne, którym z reguły jest właśnie kontroler przerwań.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Procedura obsługi przerwania musi być wykonana dość szybko ze względu na blokowanie obsługi innych przerwań. Pewne czasochłonne zadania, związane z przetwarzaniem<br /> danych w ramach operacji wejścia-wyjścia, mogą być wykonane później, poza obsługą przerwania. Określa się je jako czynności odroczone, a w systemie Linux nazywa dolną<br /> połową, podczas, gdy górna połowa oznacza część kodu wykonywaną bezpośrednio w reakcji na przerwanie. Przykładem czynności odroczonych jest interpretacja zawartości ramki <br />odebranej przez kartę sieciową. Zawartość bufora karty musi być skopiowana możliwie szybko, a dalsze przetwarzanie, np. sprawdzenie poprawności, interpretacja adresów itp.,<br /> mogą być wykonane nieco później.
+
+		<br />
+		<br />
+		Przerwania wielokrotne są zjawiskiem naturalnym w przypadku jednoczesnej obsługi wielu urządzeń. Przykładem wystąpienia przerwań wielokrotnych jest odbiór danych, z łącza<br /> komunikacyjnego, w czasie obsługi drukarki.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Ogólnie można wyróżnić kilka podejść do obsługi przerwań wielokrotnych: <br />
+
+		<b>a)</b> obsługa sekwencyjna — kolejne przerwanie (zgłoszone podczas obsługi) obsługiwane jest po zakończeniu bieżącego,<br />
+		<b>b)</b> obsługa zagnieżdżona — po zgłoszeniu nowego przerwania obsługa bieżącego jest zawieszana i kontynuowana po obsłużeniu przerwania nowo zgłoszonego,<br />
+		<b>c)</b> obsługa priorytetowa — zawieszenie obsługi bieżącego przerwania następuje tylko wówczas, gdy nowo zgłoszone przerwanie ma wyższy priorytet, w przeciwnym razie<br /> obsługa następuje po obsłużeniu wszystkich zgłoszonych przerwań o wyższym priorytecie
+	</font>
+
+		<p>
+		<a href="Index_3_uklad_przerwan.html"> Przerwanie </a> 
+		|
+		<a href="Index_4_przerwania_sprzetowe.html"> Przerwania Sprzętowe </a>
+		|
+		<a href="Index_5_przerwania_maskowalne_i_niemaskowalne.html"> Przerwania maskowalne i niemaskowalne </a>
+		|
+		<font title="Jesteś tutaj"> Kontroler przerwań </font>
+		|
+		<a href="index.html"> Powrót do strony głównej</a>
+		|
+		<a href="https://pl.wikipedia.org/wiki/Przerwanie" target="_blank" title="Toć że wikipedia"> Źródło </a>
+	</p>
+
+</center>
+</body>
+</html>
+

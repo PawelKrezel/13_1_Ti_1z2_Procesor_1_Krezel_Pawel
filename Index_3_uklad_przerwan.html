@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Układ Przerwań</title>
+</head>
+<body>
+<center>
+	<h1>Przerwanie</h1>
+
+	<font size="4">
+		Przerwanie (ang. interrupt) lub żądanie przerwania (ang. interrupt request, IRQ) – sygnał powodujący zmianę przepływu sterowania,<br /> niezależnie od aktualnie wykonywanego programu. Pojawienie się przerwania powoduje wstrzymanie aktualnie wykonywanego programu <br />i wykonanie przez procesor kodu procedury obsługi przerwania (ang. interrupt handler). Procedura ta wykonuje czynności związane <br />z obsługą przerwania i na końcu wydaje instrukcję powrotu z przerwania, która powoduje powrót do programu realizowanego przed przerwaniem.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		W informatyce przepływ sterowania oznacza kolejność, w jakiej pojedyncze wyrażenia lub instrukcje są wykonywane<br /> w paradygmacie programowania imperatywnego.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Przerwania dzielą się na dwie grupy: <br />
+		<b>1.</b> Sprzętowe: <br />
+		<b>a)</b> Zewnętrzne – sygnał przerwania pochodzi z zewnętrznego układu obsługującego przerwania sprzętowe; przerwania te służą do komunikacji z urządzeniami zewnętrznymi,<br /> np. z klawiaturą, napędami dysków itp.<br />
+		<b>b)</b> Wewnętrzne, nazywane wyjątkami (ang. exceptions) – zgłaszane przez procesor dla sygnalizowania sytuacji wyjątkowych (np. dzielenie przez zero)<br />
+		<b>2.</b> Programowe – z kodu programu wywoływana jest procedura obsługi przerwania; najczęściej wykorzystywane do komunikacji z systemem operacyjnym, który w procedurze<br /> obsługi przerwania (np. w DOS 21h, Windows 2h, Linux x86 przerwanie 80h) umieszcza kod wywołujący odpowiednie funkcje systemowe w zależności od zawartości<br />  rejestrów ustawionych przez program wywołujący, lub do komunikacji z oprogramowaniem wbudowanym jak procedury BIOS lub firmware.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Producenci procesorów część pozycji w tablicy wektorów przerwań rezerwują dla przerwań wewnętrznych. Pozostałe numery przerwań mogą być dowolnie wykorzystane przez<br /> producentów systemów komputerowych i oprogramowania. Obsługiwanie większości przerwań (wszystkich lub wybranych numerów) można wstrzymać lub zablokować,<br /> wyjątkiem są przerwania niemaskowalne.
+	</font>
+
+	<p>
+		<font title="Jesteś tutaj"> Przerwanie </font>
+		|
+		<a href="Index_4_przerwania_sprzetowe.html"> Przerwania Sprzętowe </a>
+		|
+		<a href="Index_5_przerwania_maskowalne_i_niemaskowalne.html"> Przerwania maskowalne i niemaskowalne </a>
+		|
+		<a href="Index_6_Kontroler_przerwan.html"> Kontroler przerwań </a>
+		|
+		<a href="index.html"> Powrót do strony głównej </a>
+		|
+		<a href="https://pl.wikipedia.org/wiki/Przerwanie" target="_blank" title="Toć że wikipedia"> Źródło </a>
+	</p>
+	
+</center>
+
+</body>
+</html>
+

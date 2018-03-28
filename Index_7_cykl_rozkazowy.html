@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cykl rozkazowy</title>
+</head>
+<body>
+<center>
+	
+	<h1>Cykl rozkazowy</h1>
+	<font size="4">
+		Realizując program, system mikroprocesorowy wykonuje pewne powtarzające się czynności, polegające na cyklicznym pobieraniu kodów<br /> rozkazów z pamięci i wczytywaniu ich do układu sterowania mikroprocesora, a następnie realizacji rozkazu, którego kod został pobrany.<br /> W cyklu tym możemy wyróżnić dwie fazy zwane: fazą pobrania (ang. fetch) i fazą wykonania (ang. executioń). Faza pobrania polega na <br />pobraniu kodu rozkazu z komórki pamięci o adresie przechowywanym w liczniku rozkazów, a następnie na umieszczeniu tego kodu w <br />rejestrze rozkazów IR znajdującym się w układzie sterowania mikroprocesora. Kod rozkazu przesyłany jest do mikroprocesora magistralą <br />danych. Następnie zawartość licznika rozkazów jest modyfikowana tak, aby wskazywał on na kolejny kod rozkazu przeznaczony do <br />pobrania. Po zakończeniu fazy pobrania następuje faza wykonania. Polega ona na zdekodowaniu kodu rozkazu znajdującego się w <br />rejestrze IR, czyli stwierdzeniu, jaki to rozkaz. Po zdekodowaniu kodu rozkazu układ sterowania wytwarza wewnętrzne lub zewnętrzne<br /> sygnały sterujące realizujące dany rozkaz. Kolejne etapy realizacji fazy pobrania i fazy wykonania rozkazu można przedstawić następująco: <br />
+
+		<b>1.</b> Faza pobrania<br />
+		<b>a)</b> Adresowanie: podanie zawartości licznika rozkazów na magistralę adresową<br />
+		<b>b)</b> Wczytanie zawartości zaadresowanej komórki pamięci do rejestru rozkazów mikroprocesora<br />
+		<b>c)</b> Zwiększenie zawartości licznika rozkazów<br />
+		<b>II)</b> Faza wykonania <br />
+		<b>a)</b> Zdekodowanie kodu rozkazu i wytworzenie sygnałów sterujących realizujących dany rozkaz.
+	</font>
+
+	<p>
+		<font title="Jesteś tutaj">Cykl rozkazowy </font>
+		|
+		<a href="Index_8_rejestry_procesora_dostępne_programowo.html">Rejestry procesora dostępne programowo </a>
+		|
+		<a href="index.html"> Powrót do strony głównej </a>
+		|
+		<a href="http://konkurs2011.cba.pl/index.php?option=com_content&view=article&id=24:cykl-rozkazowy&Itemid=33" target="_blank"> Źródło </a>
+	</p>
+</center>
+</body>
+</html>

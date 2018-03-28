@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Przerwania Sprzętowe</title>
+</head>
+<body>
+<center>
+	<h1>Przerwania Sprzętowe</h1>
+	<font size="4">
+		Przerwanie polega na tym, że urządzenie wymagające obsługi procesora, np. wejścia/wyjścia (klawiatura), moduł DMA (Direct Memory Access), posiada specjalne połączenie <br />(pojedynczy przewód) łączące niniejsze urządzenie z procesorem. Linia ta nosi nazwę linii przerwania. W momencie kiedy urządzenie chce być obsługiwane przez procesor <br />wystawia umówiony sygnał na linii przerwania − z reguły jest to stan wysoki (wyzwalanie poziomem sygnału) lub też zmiana stanu z 0 na 1 (wyzwalanie zboczem).
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Przykładem może być moduł klawiatury, który w momencie kiedy zostanie naciśnięty klawisz wystawia przerwanie. Sygnał ten (żądanie przerwania) zostanie odebrany przez<br /> procesor, w wyniku czego przejdzie on do procedury obsługi przerwania. W procedurze tej procesor odczyta jaki klawisz został naciśnięty, przez odczyt odpowiednich rejestrów<br /> kontrolnych klawiatury, oraz wykona dodatkowe czynności − np. wyświetlenie tego klawisza na ekranie. W wyniku odczytu rejestrów kontrolnych (lub innego umówionego wpisu do<br /> tych rejestrów) klawiatura wyłącza sygnał przerwania − ustawia na linii przerwania stan nieaktywny z reguły jest to stan niski. Dzięki temu procesor może zareagować na naciśnięcie <br />następnego klawisza i obsłużyć kolejne przerwanie. Ostatnią instrukcją w procedurze obsługi przerwania jest specjalny rozkaz procesora <b>reti</b> (ang. return from interrupt), który<br /> pozwala mu wrócić do poprzednich czynności, tuż przed wystąpieniem przerwania.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Obsługa przerwania jest bardzo podobna do zwykłego skoku do podprogramu, podczas którego to procesor składa na stosie aktualny stan rejestru licznika programu <br />(ang. program counter), a następnie wykonuje skok do podprogramu. Po jego zakończeniu, procesor powraca do programu głównego poprzez załadowanie licznika programu <br />wartością, która została uprzednio złożona na stosie. Podstawowa różnica polega na tym, że przerwania sprzętowe są asynchroniczne względem wykonywanego programu i mogą<br /> występować w dowolnej chwili − czyli wtedy, gdy niezależne urządzenie wystawi sygnał przerwania. Podobieństwa obsługi przerwań i skoku do podprogramu są na tyle duże,<br /> że niektórzy wykorzystują przerwania programowe jako sposób skoku do podprogramu.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Zwykle procesor musi obsługiwać wiele urządzeń, czyli posiadać wiele linii przerwań. Każda linia posiada w takim wypadku swój unikalny numer (identyfikator) i procedurę<br /> przerwania. W większości systemów identyfikator jest to niewielka liczba będąca przesunięciem (offsetem) w specjalnej strukturze zwanej tablicą wektorów przerwań. W tablicy tej<br /> znajdują się adresy procedur lub też instrukcje skoku do procedur obsługi poszczególnych przerwań. I tak wystąpienie przerwania nr 5 powoduje skok do procedury obsługi, której <br />adres znajduje się na piątej pozycji tejże tablicy. W ten sposób obsługa przerwania nie wymaga wyszukiwania odpowiedniej procedury, a jedynie odczytania jednego wektora <br />przerwania. W procesorze Intel o architekturze IA-32 tablica wektorów przerwań ma 256 pozycji. Pierwsze 32 pozycje odpowiadają przerwaniom niemaskowalnym, natomiast <br />pozostałe są przerwaniami maskowalnymi.
+	</font>
+
+
+	<p>
+		<a href="Index_3_uklad_przerwan.html"> Przerwanie </a> 
+		|
+		<font title="Jesteś tutaj"> Przerwania Sprzętowe </font>
+		|
+		<a href="Index_5_przerwania_maskowalne_i_niemaskowalne.html"> Przerwania maskowalne i niemaskowalne </a>
+		|
+		<a href="Index_6_Kontroler_przerwan.html"> Kontroler przerwań </a>
+		|
+		<a href="index.html"> Powrót do strony głównej</a>
+		|
+		<a href="https://pl.wikipedia.org/wiki/Przerwanie" target="_blank" title="Toć że wikipedia"> Źródło </a>
+	</p>
+</center>
+</body>
+</html>

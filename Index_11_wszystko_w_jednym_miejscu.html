@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wszystko W Jednym Miejscu</title>
+</head>
+<body>
+<center>
+		<h1>Wszystko W Jednym Miejscu</h1>
+		<h2>Układ DMA</h2>
+		<font size="4">
+		Direct Memory Access, DMA (z ang. bezpośredni dostęp do pamięci) – technika, w której sprzęt komputerowy podłączony do płyty głównej, <br />np. karta graficzna, karta dźwiękowa, karta sieciowa czy kontroler dysku twardego, mogą korzystać z pamięci operacyjnej RAM lub portów <br />we-wy, pomijając przy tym CPU. Wymaga to niewielkiej współpracy ze strony procesora, który musi zaprogramować kontroler DMA do wykonania<br /> odpowiedniego transferu danych, a następnie na czas przesyłania danych zwolnić magistralę systemową (przejść w stan wysokiej <br />impedancji). Natomiast sam transfer danych jest już zadaniem wyłącznie kontrolera DMA. Realizacja cykli DMA może być przejmowana przez <br />dedykowany układ cyfrowy, tak jak np. w komputerach PC, lub być realizowana programowo przez dane urządzenie.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		DMA ma za zadanie odciążyć procesor główny od przesyłania danych (np. z urządzenia wejściowego do pamięci). Procesor może w tym czasie <br />zająć się innymi działaniami, wykonując kod programu pobrany uprzednio z pamięci RAM do pamięci podręcznej. Specjalizowane układy <br />wspomagające DMA (np. te spotykane w PC), potrafią kopiować obszary pamięci dużo szybciej niż uczyniłby to programowo procesor główny.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Istnieje specjalna procedura DMA, Scatter-Gather (dosł.: „rozrzuć-zbierz”), pozwalająca przenosić dane do wielu obszarów pamięci w<br /> pojedynczym transferze. Pod względem skutków jest to równoważne połączeniu łańcuchowemu kilku transferów, jednak jest wyraźnie szybsze.
+	</font>
+
+	<br />
+	<br />
+
+	<h2>Przerwanie</h2>
+	<font size="4">
+		Przerwanie (ang. interrupt) lub żądanie przerwania (ang. interrupt request, IRQ) – sygnał powodujący zmianę przepływu sterowania,<br /> niezależnie od aktualnie wykonywanego programu. Pojawienie się przerwania powoduje wstrzymanie aktualnie wykonywanego programu <br />i wykonanie przez procesor kodu procedury obsługi przerwania (ang. interrupt handler). Procedura ta wykonuje czynności związane <br />z obsługą przerwania i na końcu wydaje instrukcję powrotu z przerwania, która powoduje powrót do programu realizowanego przed przerwaniem.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		W informatyce przepływ sterowania oznacza kolejność, w jakiej pojedyncze wyrażenia lub instrukcje są wykonywane<br /> w paradygmacie programowania imperatywnego.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Przerwania dzielą się na dwie grupy: <br />
+		<b>1.</b> Sprzętowe: <br />
+		<b>a)</b> Zewnętrzne – sygnał przerwania pochodzi z zewnętrznego układu obsługującego przerwania sprzętowe; przerwania te służą do komunikacji z urządzeniami zewnętrznymi,<br /> np. z klawiaturą, napędami dysków itp.<br />
+		<b>b)</b> Wewnętrzne, nazywane wyjątkami (ang. exceptions) – zgłaszane przez procesor dla sygnalizowania sytuacji wyjątkowych (np. dzielenie przez zero)<br />
+		<b>2.</b> Programowe – z kodu programu wywoływana jest procedura obsługi przerwania; najczęściej wykorzystywane do komunikacji z systemem operacyjnym, który w procedurze<br /> obsługi przerwania (np. w DOS 21h, Windows 2h, Linux x86 przerwanie 80h) umieszcza kod wywołujący odpowiednie funkcje systemowe w zależności od zawartości<br />  rejestrów ustawionych przez program wywołujący, lub do komunikacji z oprogramowaniem wbudowanym jak procedury BIOS lub firmware.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Producenci procesorów część pozycji w tablicy wektorów przerwań rezerwują dla przerwań wewnętrznych. Pozostałe numery przerwań mogą być dowolnie wykorzystane przez<br /> producentów systemów komputerowych i oprogramowania. Obsługiwanie większości przerwań (wszystkich lub wybranych numerów) można wstrzymać lub zablokować,<br /> wyjątkiem są przerwania niemaskowalne.
+	</font>
+
+	<br />
+	<br />
+
+<h2>Przerwania Sprzętowe</h2>
+	<font size="4">
+		Przerwanie polega na tym, że urządzenie wymagające obsługi procesora, np. wejścia/wyjścia (klawiatura), moduł DMA (Direct Memory Access), posiada specjalne połączenie <br />(pojedynczy przewód) łączące niniejsze urządzenie z procesorem. Linia ta nosi nazwę linii przerwania. W momencie kiedy urządzenie chce być obsługiwane przez procesor <br />wystawia umówiony sygnał na linii przerwania − z reguły jest to stan wysoki (wyzwalanie poziomem sygnału) lub też zmiana stanu z 0 na 1 (wyzwalanie zboczem).
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Przykładem może być moduł klawiatury, który w momencie kiedy zostanie naciśnięty klawisz wystawia przerwanie. Sygnał ten (żądanie przerwania) zostanie odebrany przez<br /> procesor, w wyniku czego przejdzie on do procedury obsługi przerwania. W procedurze tej procesor odczyta jaki klawisz został naciśnięty, przez odczyt odpowiednich rejestrów<br /> kontrolnych klawiatury, oraz wykona dodatkowe czynności − np. wyświetlenie tego klawisza na ekranie. W wyniku odczytu rejestrów kontrolnych (lub innego umówionego wpisu do<br /> tych rejestrów) klawiatura wyłącza sygnał przerwania − ustawia na linii przerwania stan nieaktywny z reguły jest to stan niski. Dzięki temu procesor może zareagować na naciśnięcie <br />następnego klawisza i obsłużyć kolejne przerwanie. Ostatnią instrukcją w procedurze obsługi przerwania jest specjalny rozkaz procesora <b>reti</b> (ang. return from interrupt), który<br /> pozwala mu wrócić do poprzednich czynności, tuż przed wystąpieniem przerwania.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Obsługa przerwania jest bardzo podobna do zwykłego skoku do podprogramu, podczas którego to procesor składa na stosie aktualny stan rejestru licznika programu <br />(ang. program counter), a następnie wykonuje skok do podprogramu. Po jego zakończeniu, procesor powraca do programu głównego poprzez załadowanie licznika programu <br />wartością, która została uprzednio złożona na stosie. Podstawowa różnica polega na tym, że przerwania sprzętowe są asynchroniczne względem wykonywanego programu i mogą<br /> występować w dowolnej chwili − czyli wtedy, gdy niezależne urządzenie wystawi sygnał przerwania. Podobieństwa obsługi przerwań i skoku do podprogramu są na tyle duże,<br /> że niektórzy wykorzystują przerwania programowe jako sposób skoku do podprogramu.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Zwykle procesor musi obsługiwać wiele urządzeń, czyli posiadać wiele linii przerwań. Każda linia posiada w takim wypadku swój unikalny numer (identyfikator) i procedurę<br /> przerwania. W większości systemów identyfikator jest to niewielka liczba będąca przesunięciem (offsetem) w specjalnej strukturze zwanej tablicą wektorów przerwań. W tablicy tej<br /> znajdują się adresy procedur lub też instrukcje skoku do procedur obsługi poszczególnych przerwań. I tak wystąpienie przerwania nr 5 powoduje skok do procedury obsługi, której <br />adres znajduje się na piątej pozycji tejże tablicy. W ten sposób obsługa przerwania nie wymaga wyszukiwania odpowiedniej procedury, a jedynie odczytania jednego wektora <br />przerwania. W procesorze Intel o architekturze IA-32 tablica wektorów przerwań ma 256 pozycji. Pierwsze 32 pozycje odpowiadają przerwaniom niemaskowalnym, natomiast <br />pozostałe są przerwaniami maskowalnymi.
+	</font>
+
+	<br />
+	<br />
+
+<h2>Przerwania maskowalne i niemaskowalne</h2>
+	
+	<font size="4">
+		Wśród przerwań niektóre są ważniejsze od innych. Obsługa tych ważniejszych nie powinna być przerywana przez te mniej ważne. Nie będziemy przecież obsługiwać przerwań <br />z klawiatury w czasie obsługi przerwania spadku zasilania w sieci, gdy system operacyjny musi szybko zamrozić i zapisać stan wszystkich obliczeń dopóki UPS jeszcze utrzymuje<br /> przez pewien czas napięcie. Wyróżnia się więc zwykle dwie grupy przerwań: maskowalne i niemaskowalne. Odbieranie przerwań maskowalnych może być chwilowo wyłączone <br />(procesor je wtedy ignoruje albo odkłada na później). Odbierania przerwań niemaskowalnych nie można wyłączyć. Sterowniki urządzeń korzystają z przerwań maskowalnych. <br />Przerwania niemaskowalne wiążą się z poważniejszymi zdarzeniami, takimi jak nieusuwalne błędy pamięci.
+	</font>
+
+	<br />
+	<br />
+
+	<h2>Kontroler przerwań</h2>
+	<font size="4">
+		W niektórych systemach jest tak dużo obsługiwanych urządzeń, że procesorowi brakuje wyprowadzeń linii przerwań. W takim wypadku stosuje się specjalne urządzenie - kontroler <br />przerwań (np. APIC, Intel 8259 itp.), który pośredniczy pomiędzy procesorem a wieloma urządzeniami żądającymi przerwania. Kontroler przerwań ma kilka linii wejściowych,<br /> podłączonych do wyjść przerwań poszczególnych urządzeń, i jedną wyjściową, za pośrednictwem której przekazuje sygnał przerwania do procesora. Najprostsza sprzętowa <br />realizacja takiego kontrolera to zwykła bramka OR, która wystawia sygnał przerwania do procesora w momencie, kiedy dowolne urządzenie wystawiło taki sygnał. Rzeczywisty<br /> kontroler przerwań ma możliwość maskowania wybranych urządzeń (pochodzących od nich przerwań), nadawania priorytetów poszczególnym urządzeniom, itd. Kontroler przerwań<br /> posiada odpowiedni sterownik - procedurę obsługi przerwania (ang. interrupt handler). W procedurze tej z reguły odczytywany jest rejestr kontrolny kontrolera przerwań i to pozwala<br /> na stwierdzane, które urządzenie wystawiło przerwanie. Na podstawie tego sterownik kontrolera przerwań uruchamia podprogram obsługujący urządzenie (ang. device handler),<br /> które wystawiło to żądanie przerwania. Kontroler przerwań zyskał tak dużą popularność, że większość procesorów posiada już tylko jedną linię przerwania - czyli może obsługiwać <br />tylko jedno urządzenie zewnętrzne, którym z reguły jest właśnie kontroler przerwań.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Procedura obsługi przerwania musi być wykonana dość szybko ze względu na blokowanie obsługi innych przerwań. Pewne czasochłonne zadania, związane z przetwarzaniem<br /> danych w ramach operacji wejścia-wyjścia, mogą być wykonane później, poza obsługą przerwania. Określa się je jako czynności odroczone, a w systemie Linux nazywa dolną<br /> połową, podczas, gdy górna połowa oznacza część kodu wykonywaną bezpośrednio w reakcji na przerwanie. Przykładem czynności odroczonych jest interpretacja zawartości ramki <br />odebranej przez kartę sieciową. Zawartość bufora karty musi być skopiowana możliwie szybko, a dalsze przetwarzanie, np. sprawdzenie poprawności, interpretacja adresów itp.,<br /> mogą być wykonane nieco później.
+
+		<br />
+		<br />
+		Przerwania wielokrotne są zjawiskiem naturalnym w przypadku jednoczesnej obsługi wielu urządzeń. Przykładem wystąpienia przerwań wielokrotnych jest odbiór danych, z łącza<br /> komunikacyjnego, w czasie obsługi drukarki.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Ogólnie można wyróżnić kilka podejść do obsługi przerwań wielokrotnych: <br />
+
+		<b>a)</b> obsługa sekwencyjna — kolejne przerwanie (zgłoszone podczas obsługi) obsługiwane jest po zakończeniu bieżącego,<br />
+		<b>b)</b> obsługa zagnieżdżona — po zgłoszeniu nowego przerwania obsługa bieżącego jest zawieszana i kontynuowana po obsłużeniu przerwania nowo zgłoszonego,<br />
+		<b>c)</b> obsługa priorytetowa — zawieszenie obsługi bieżącego przerwania następuje tylko wówczas, gdy nowo zgłoszone przerwanie ma wyższy priorytet, w przeciwnym razie<br /> obsługa następuje po obsłużeniu wszystkich zgłoszonych przerwań o wyższym priorytecie
+	</font>	
+
+	<br />
+	<br />
+	
+	<h2>Cykl rozkazowy</h2>
+	<font size="4">
+		Realizując program, system mikroprocesorowy wykonuje pewne powtarzające się czynności, polegające na cyklicznym pobieraniu kodów<br /> rozkazów z pamięci i wczytywaniu ich do układu sterowania mikroprocesora, a następnie realizacji rozkazu, którego kod został pobrany.<br /> W cyklu tym możemy wyróżnić dwie fazy zwane: fazą pobrania (ang. fetch) i fazą wykonania (ang. executioń). Faza pobrania polega na <br />pobraniu kodu rozkazu z komórki pamięci o adresie przechowywanym w liczniku rozkazów, a następnie na umieszczeniu tego kodu w <br />rejestrze rozkazów IR znajdującym się w układzie sterowania mikroprocesora. Kod rozkazu przesyłany jest do mikroprocesora magistralą <br />danych. Następnie zawartość licznika rozkazów jest modyfikowana tak, aby wskazywał on na kolejny kod rozkazu przeznaczony do <br />pobrania. Po zakończeniu fazy pobrania następuje faza wykonania. Polega ona na zdekodowaniu kodu rozkazu znajdującego się w <br />rejestrze IR, czyli stwierdzeniu, jaki to rozkaz. Po zdekodowaniu kodu rozkazu układ sterowania wytwarza wewnętrzne lub zewnętrzne<br /> sygnały sterujące realizujące dany rozkaz. Kolejne etapy realizacji fazy pobrania i fazy wykonania rozkazu można przedstawić następująco: <br />
+
+		<b>1.</b> Faza pobrania<br />
+		<b>a)</b> Adresowanie: podanie zawartości licznika rozkazów na magistralę adresową<br />
+		<b>b)</b> Wczytanie zawartości zaadresowanej komórki pamięci do rejestru rozkazów mikroprocesora<br />
+		<b>c)</b> Zwiększenie zawartości licznika rozkazów<br />
+		<b>II)</b> Faza wykonania <br />
+		<b>a)</b> Zdekodowanie kodu rozkazu i wytworzenie sygnałów sterujących realizujących dany rozkaz.
+	</font>
+
+	<br />
+	<br />
+
+	<h2>Rejestry procesora dostępne programowo</h2>
+
+	<font size="4">
+		Zgodnie ze schematem blokowym mikroprocesora, zarówno jednostka arytmetycznologiczna, jak i układ sterowania współpracują z określonym zestawem rejestrów. <br />Zawartość pewnej części rejestrów z tego zestawu może być zmieniana w wyniku wykonania przez procesor określonej instrukcji. Rejestry takie nazywamy rejestrami<br /> dostępnymi programowo. Pozostałe rejestry są niedostępne dla użytkownika i ich zestaw nie jest zwykle znany. W rejestrach dostępnych programowo występują takie typy<br /> rejestrów, których odpowiedniki znajdują się praktycznie w każdym procesorze. Ich pojemność czy ilość może się zmieniać, jednak wykonywane zadania pozostają takie same.
+
+		<br />
+		<br />
+
+		Rejestry te to:<br />
+		A-akumulator <br />
+		B,C,D,E,H,L - rejestry robocze (uniwersalne)<br />
+		SP - wskaźnik stosu
+
+	</font>
+
+	<br />
+	<br />
+
+	<h2>Stos</h2>
+
+	<font size="4">
+		Stos (ang. Stack) – liniowa struktura danych, w której dane dokładane są na wierzch stosu i z wierzchołka stosu są pobierane (bufor typu <b>LIFO</b>, Last In, First Out; <br />ostatni na wejściu, pierwszy na wyjściu). Ideę stosu danych można zilustrować jako stos położonych jedna na drugiej książek – nowy egzemplarz kładzie się na wierzch stosu<br /> i z wierzchu stosu zdejmuje się kolejne egzemplarze. Elementy stosu poniżej wierzchołka można wyłącznie obejrzeć, aby je ściągnąć, <br />trzeba najpierw po kolei ściągnąć to, co jest nad nimi.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Stos jest używany w systemach komputerowych na wszystkich poziomach funkcjonowania systemów informatycznych. Stosowany jest przez procesory do chwilowego<br /> zapamiętywania rejestrów procesora, do przechowywania zmiennych lokalnych, a także w programowaniu wysokopoziomowym.
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Przeciwieństwem stosu jest kolejka, bufor typu <b>FIFO</b> (ang. First In, First Out; pierwszy na wejściu, pierwszy na wyjściu), w którym dane<br /> obsługiwane są w takiej kolejności, w jakiej zostały dostarczone (jak w kolejce do kasy).
+	</font>	
+
+	<br />
+	<br />
+
+	<font size="4">
+		Jedną z implementacji stosu jako struktury danych jest obszar w pamięci wydzielony dla danego wątku, służący do przechowywania adresów powrotu i zmiennych lokalnych.<br /> Wielkość stosu jest stała w czasie wykonywania programu, ustalana w czasie kompilacji, stąd zdarza się, że program chce zapisać w nim więcej niż przewidziano.<br /> Mówimy wówczas o przepełnieniu stosu.
+	</font>
+
+	<h2>Podstawowe Operacje</h2>
+	<font size="4">
+		W powyższym opisie pojawiły się pewne operacje, jakie można wykonywać na stosie. Oto ich formalny zapis: <br />
+		push(obiekt) – czyli odłożenie obiektu na stos;<br />
+		pop() – ściągnięcie obiektu ze stosu i zwrócenie jego wartości;<br />
+		isEmpty() - sprawdzenie czy na stosie znajdują się już jakieś obiekty.
+	</font>
+
+	<br />
+	<br />
+
+	<h2>Obsługa stosu przez procesory x86</h2>
+
+	<font size="4">
+		Obsługa stosu jest zapewniana przez procesor. Jego umiejscowienie i rozmiar są określone przez wartości dwóch rejestrów: <br />
+
+
+	SS – rejestr segmentowy, wskazujący na początek stosu, czyli krańcową wartość, jaką może przyjąć ESP.<br />
+	ESP (SP w architekturze 16-bitowej) – rejestr wskazujący na element znajdujący się na szczycie stosu.
+
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Do obsługi stosu natomiast służą instrukcje:<br />
+		<b>push</b> powoduje umieszczenie wartości na szczycie stosu. Odpowiada on przesunięciu rejestru ESP o odpowiednią ilość bajtów (w zależności od rozmiaru rejestru, <br />którego wartość przenosimy na stos) w tył i zapisanie w tym miejscu żądanej wartości.<br />
+		<b>pop</b>	powoduje zdjęcie wartości ze stosu. Odpowiada on zapisaniu odpowiedniej ilości bajtów (zależącej od rozmiaru rejestru, do którego przenosimy wartość)<br /> w rejestrze i przesunięciu ESP o tyleż bajtów do przodu.
+
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Instrukcje używające stosu <br />
+		Instrukcje wywołania procedury <b>call</b>, przerwań programowych <b>Int</b> oraz sprzętowych odkładają na stosie adres do którego procesor ma powrócić po wykonaniu procedury. <br />Dane te zdejmuje ze stosu instrukcją powrotu z procedury <b>ret</b>.
+	</font>
+
+	<p>
+		<a href="index.html">Powrót do strony głównej</a>
+	</p>
+
+</center>
+
+</body>
+</html>

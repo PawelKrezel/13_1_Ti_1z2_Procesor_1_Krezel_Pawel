@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Obsługa stosu przez procesory x86</title>
+</head>
+<body>
+<center>
+	<h1>Obsługa stosu przez procesory x86</h1>
+
+	<font size="4">
+		Obsługa stosu jest zapewniana przez procesor. Jego umiejscowienie i rozmiar są określone przez wartości dwóch rejestrów: <br />
+
+
+	SS – rejestr segmentowy, wskazujący na początek stosu, czyli krańcową wartość, jaką może przyjąć ESP.<br />
+	ESP (SP w architekturze 16-bitowej) – rejestr wskazujący na element znajdujący się na szczycie stosu.
+
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Do obsługi stosu natomiast służą instrukcje:<br />
+		<b>push</b> powoduje umieszczenie wartości na szczycie stosu. Odpowiada on przesunięciu rejestru ESP o odpowiednią ilość bajtów (w zależności od rozmiaru rejestru, <br />którego wartość przenosimy na stos) w tył i zapisanie w tym miejscu żądanej wartości.<br />
+		<b>pop</b>	powoduje zdjęcie wartości ze stosu. Odpowiada on zapisaniu odpowiedniej ilości bajtów (zależącej od rozmiaru rejestru, do którego przenosimy wartość)<br /> w rejestrze i przesunięciu ESP o tyleż bajtów do przodu.
+
+	</font>
+
+	<br />
+	<br />
+
+	<font size="4">
+		Instrukcje używające stosu <br />
+		Instrukcje wywołania procedury <b>call</b>, przerwań programowych <b>Int</b> oraz sprzętowych odkładają na stosie adres do którego procesor ma powrócić po wykonaniu procedury. <br />Dane te zdejmuje ze stosu instrukcją powrotu z procedury <b>ret</b>.
+	</font>
+	
+	<p>
+		<a href="Index_9_stos.html" title="SZTOS">Stos </a>
+		|
+		<font title="Jesteś tutaj"> Obsługa stosu przez procesory x86 </font>
+		|
+		<a href="index.html"> Powrót do strony głównej </a>
+		|
+		<a href="https://pl.wikipedia.org/wiki/Stos_(informatyka)" target="_blank" title="Toć że wikipedia"> Źródło </a>
+	</p>
+
+</center>
+</body>
+</html>
